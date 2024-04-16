@@ -1,0 +1,5 @@
+package exampleGoAPI
+
+func ExampleEcho() {
+
+}
