@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"net/http"
 
-	"github.com/PParist/go-example/exampleGO"
+	"github.com/PParist/go-example/exampleGoAPI"
 )
 
 func main() {
@@ -41,8 +43,14 @@ func main() {
 	//exampleGO.ExampleJson()
 	//exampleGO.ExampleConstants()
 	//exampleGO.ExampleVariadic("String", 10, 100.56, true)
-	exampleGO.ExampleDefer()
-
+	//exampleGO.ExampleDefer()
+	http.HandleFunc("/movies", exampleGoAPI.MovieHandler)
+	err := http.ListenAndServe("localhost:8080", nil)
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("Run on Port localhost:8080")
+	}
 }
 
 func exampleArray() {
