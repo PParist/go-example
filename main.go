@@ -45,12 +45,12 @@ func main() {
 	//exampleGO.ExampleVariadic("String", 10, 100.56, true)
 	//exampleGO.ExampleDefer()
 	http.HandleFunc("/movies", exampleGoAPI.MovieHandler)
-	err := http.ListenAndServe("localhost:8080", nil)
-	if err != nil {
+
+	if err := http.ListenAndServe("localhost:8080", nil); err != nil {
 		log.Fatal(err)
-	} else {
-		fmt.Println("Run on Port localhost:8080")
 	}
+
+	fmt.Println("Server is running on localhost:8080")
 }
 
 func exampleArray() {
